@@ -1,0 +1,56 @@
+body{
+    margin-left: 60px;
+    background:linear-gradient(135deg, #cbe5f0, #7682ea);
+    color: black;
+    font-family: 'Roboto';
+}
+.club{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+    justify-content:space-around;
+    width: 100%;
+}
+.card
+{
+    background-color: #00abff;
+    padding: 20px;
+    margin: 8px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+img{
+    width: 380px;
+    height: 250px;
+    border-radius: 8px 8px 0px 0px;
+}
+.card b{
+    display: block;
+    font-size: 26px;
+    margin-top: 10px;
+    color: #FFFFFF;
+}
+.card p{
+    font-size: 22px;
+    color: #FFFFFF;
+    margin: 5px 0px 15px 0px;
+}
+.card button{
+    font-size: 22px;
+    font-weight: 24px;
+    height: 40px;
+    width: 200px;
+}
+button{
+    height: 80px;
+    width: 150px;
+    font-size: 30px;
+}
+p{
+    font-size: 30px; 
+}

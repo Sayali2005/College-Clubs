@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>College and its Clubs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+  <!-- <link rel="stylesheet" type="text/css" href="./public/css/index_style.css"> -->
+  <style>
+    html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+i {
+    color: #2fccd0;
+}
+
+p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #606060;
+}
+
+.extra-div h2,
+.service-div h2 {
+    font-size: 0.9rem;
+    margin: 20px 0 15px 0;
+    font-weight: bold;
+    line-height: 1.1;
+    word-spacing: 4px;
+}
+
+.header {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 168, 255, 0.3), rgba(0, 168, 255, 0.3)), url('../images/cover.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.header:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    opacity: .3;
+    z-index: -1;
+    background: linear-gradient(to right, #1e5799 0%, #3ccdbb 0%, #16c9f6 100%);
+}
+
+.navbar:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    opacity: .3;
+    z-index: -1;
+    background: linear-gradient(to right, #1e5799 0%, #3ccdbb 0%, #16c9f6 100%);
+}
+
+.nav-item a {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.nav-item a:hover {
+    transform: translateY(5px);
+}
+
+.header-section {
+    width: 100%;
+    height: inherit;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.center-div {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.header-buttons a {
+    border: 1px solid #fff;
+    border-radius: 100px;
+    margin: 0 5px;
+    padding: 12px 35px;
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.header-buttons a:hover {
+    color: #50d1c0;
+    background: #fff;
+    text-decoration: none;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.center-div p {
+    font-size: 1.3rem;
+    padding: 10px 0 20px 0;
+    color: white;
+}
+
+.header-extradiv {
+    width: 100%;
+    height: auto;
+    margin: 100px 0;
+    text-align: center;
+}
+
+.extra-div {
+    background: #fff;
+    border: medium none;
+    padding: 50px !important;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.extra-div:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+}
+
+.project-works {
+    margin: 100px 0;
+}
+
+.project-works h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.clients-feedback {
+    width: 100%;
+    /* height: 135vh; */
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 20x;
+    transition: 0.3s ease;
+}
+
+.box:hover {
+    background: #16c9f6;
+}
+
+.box:hover p {
+    color: #fff;
+}
+
+.carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: -60px !important;
+}
+
+.carousel-indicators li {
+    background-color: #16c9f6 !important;
+}
+
+.box a {
+    position: relative;
+}
+
+.box a img {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.box h1 {
+    font-size: 18px;
+    font-weight: 400px;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.box h2 {
+    font-size: 13px;
+    font-weight: 400px;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.contactus {
+    width: 100%;
+    height: 100vh;
+    padding: 80px 0;
+    position: relative;
+}
+
+.contactus:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(330deg, #16c9f6 55%, #fff 0%);
+    z-index: -1;
+}
+
+.form-button button {
+    border: 1px solid #50d1c0;
+    border-radius: 100px;
+    margin: 0 5px;
+    padding: 12px 35px;
+    outline: none;
+    color: #50d1c0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    background: transparent;
+}
+
+.form-button button:hover {
+    color: #50d1c0;
+}
+
+form:hover .form-button button {
+    background: #fff;
+    color: #50d1c0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+::placeholder {
+    font-size: 0.85rem;
+}
+
+.footersection {
+    padding: 80px 0;
+    position: relative;
+}
+
+.card>img{
+    height: 200px;
+}
+
+#myBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    z-index: 99;
+    border: none;
+    color: #fff;
+    background: #00abff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#myBtn:hover {
+    background: #606060;
+}
+
+.members {
+    color: #000;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.members:hover {
+    font-weight: 800;
+}
+
+.forms {
+    color: #fff;
+    background: #16c9f6;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.cta {
+    margin-bottom: 20px;
+}
+
+.cta h3 {
+    margin: 15px 0;
+    color: white;
+}
+
+.cta-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background-color: #ff6b6b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff4747;
+}
+
+.forms p {
+    margin-top: 10px;
+}
+
+.forms a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.forms a:hover {
+    text-decoration: none;
+}
+
+@media(max-width: 768px) {
+    .nav-item {
+        text-align: center !important;
+    }
+
+    .clients-feedback,
+    .contactus {
+        height: auto;
+        margin-top: 50px;
+    }
+
+    .contactus p {
+        padding: 0 50px;
+    }
+
+    .footer-text {
+        margin: 30px 0;
+    }
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.card {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 410px;
+}
+
+.btn2{
+    background-color: rgb(94, 128, 239); /* Green */
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.new2:hover{
+    background-color: #ff4747;
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+  </style>
+</head>
+  <body>
+  	<div class="header" id="topheader">
+  		<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+		 <div class="container text-uppercase p-2">
+		  <a class="navbar-brand font-weight-bold text-white" href="#">Life @SIGCE</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav ml-auto text-uppercase">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#clients-feedback-div">Clubs</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="https://sigce.edu.in/about-us/">About</a>
+		      </li> 
+		      <li class="nav-item">
+		        <a class="nav-link" href="#contactus-div">Contact Us</a>
+		      </li> 
+              <li class="nav-item">
+		        <a class="nav-link" href="/login">Login</a>
+		      </li> 
+              <li class="nav-item">
+		        <a class="nav-link" href="/signUp">SignUp</a>
+		      </li> 
+              <li class="nav-item">
+		        <a class="nav-link" href="/alogin">Admin_Login</a>
+		      </li> 
+		    </ul>
+		  </div>
+		 </div>
+		</nav>
+
+	<section class="header-section">
+		<div class="center-div">
+			<h1 class="font-weight-bold text-uppercase">LET'S GROW TOGETHER</h1>
+			<p class="text-capitalize">we believe in collaboration over competition</p>
+			<div class="header-buttons">
+				<a href="#header-extra-div">Why Join US ?</a>
+				<a href="https://sigce.edu.in/about-us/">About US</a>
+			</div>
+		</div>
+	</section>
+  	</div>	
+  		
+  	<section class="header-extradiv" id="header-extra-div">
+  		<div class="container headings text-center">
+  			<h1 class="text-center font-weight-bold text-capitalize">Why Join Us ?</h1>
+  			<p class="text-center text-capitalize">
+  				Not Convinced Yet? Want some more Reasons? <a href="exxplore.html"> Explore All </a>
+  			</p>
+  		</div><br/>
+  		<div class="container">
+  			<div class="row">
+  				<div class="extra-div col-lg-4 col-md-4 col-12">
+  					<a href="#"><i class="fa-3x fa fa-user" aria-hidden="true"></i></a>
+  					<h2 class="text-uppercase">Learn more about yourself</h2>
+  					<p>
+  						Joining a club presents many opportunities to learn more about yourself.
+  					    You will be able to discover your passion, your skills and experiment with areas of expertise.
+  					    This self-awareness will be beneficial in your future career.
+  					</p>
+  				</div>
+  				<div class="extra-div col-lg-4 col-md-4 col-12">
+  					<a href="#"><i class="fa-3x fa fa-trophy" aria-hidden="true"></i></a>
+  					<h2 class="text-uppercase">Develop soft skills</h2>
+  					<p>
+  						Soft skills allow us to effectively interact with others, like communication, attitude, and work ethics. 
+  						Participating in club improves these skills.  
+  						You will gain emotional intelligence as you develop new relationships.
+  					</p>
+  				</div>
+  				<div class="extra-div col-lg-4 col-md-4 col-12">
+  					<a href="#"><i class="fa-3x fa fa-users" aria-hidden="true"></i></a>
+  					<h2 class="text-uppercase">Expand your Network</h2>
+  					<p>
+  						Joining a club enables you to connect to a peer groups who shares similar interests as you. 
+  						This can be an amazing platform to meet potential employers. 
+  						These connections will be invaluable for you in the near future.   
+  					</p>
+  				</div>
+  			</div>
+  		</div>
+  	</section>  
+
+	<section class="clients-feedback" id="clients-feedback-div">
+  		<div class="container headings text-center">
+  			<h1 class="text-center font-weight-bold text-capitalize">Our Clubs?</h1>
+  			<p class="text-center text-capitalize">
+  				SIGCE has various technical, cultural, social clubs
+  			</p>
+            <a href="/deptClubs" class="new2" style="font-size: 25px; color: black; background-color: #87eaf7; border: 2px solid black; padding: 4px; ">Explore Clubs as per Departments</a>
+  		</div><br/>
+		  <div class="card-container">
+                <%for(let club of clubs){%>
+                    <div class="card">
+                        <!-- <i class="fas fa-cogs"></i> -->
+                        <img src="<%= club.clubImages %>" alt="">
+                        <h2><%= club.clubName %></h2>
+                        <p><%= club.clubDescription %></p>
+                        <br>
+                        <form method="get" action="/clubs/<%= club._id%>">
+                            <button class="btn2">See in Details</button>
+                        </form>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+ 
+			<!-- <div class="card">
+				<i class="fas fa-book"></i>
+				<h2>Literary Club</h2>
+				<p>Encourages creative writing, poetry, and storytelling.</p>
+                <button>See in Details</button>
+			</div>
+	
+			<div class="card">
+				<i class="fas fa-cogs"></i>
+				<h2>Engineering Club</h2>
+				<p>Focuses on engineering principles, projects, and competitions.</p>
+                <button>See in Details</button>
+			</div>
+	
+			<div class="card">
+				<i class="fas fa-paint-brush"></i>
+				<h2>Art Club</h2>
+				<p>Fosters artistic expression through painting, drawing, and other visual arts.</p>
+                <button>See in Details</button>
+			</div>
+	
+			<div class="card">
+				<i class="fas fa-basketball-ball"></i>
+				<h2>Sports Club</h2>
+				<p>Offers various sports teams and competitions, promoting physical fitness and teamwork.</p>
+                <button>See in Details</button>
+			</div>
+	
+			<div class="card">
+				<i class="fas fa-hands-helping"></i>
+				<h2>Volunteer Club</h2>
+				<p>Promotes community service, charitable initiatives, and social responsibility.</p>
+                <button>See in Details</button>
+			</div>
+	
+			<div class="card">
+				<i class="fas fa-users"></i>
+				<h2>NSS  </h2>
+				<p>Engages students in community service and social awareness projects to contribute to societal development.</p>
+                <button>See in Details</button>
+			</div> -->
+
+<section class="forms">
+	<div class="cta">
+		<h3>Want to join a club?</h3>
+        <form method="get" action="/clubs/join">
+            <button class="cta-button">Join a Club</button>
+        </form>
+		<!-- <a href="join.ejs" class="cta-button">Join a Club</a> -->
+
+		<h3>Or, Create Your Own Club</h3>
+        <form method="get" action="/clubs/new">
+            <button class="cta-button">Create a Club</button>
+        </form>
+		<!-- <a href="new.ejs" class="cta-button">Create a Club</a> -->
+	</div>
+  </section>
+ 
+	<section class="project-works">
+  		<div class="container headings text-center">
+  			<h1 class="text-center font-weight-bold text-capitalize">People Associated With Us</h1><br/>
+  		</div><br/>
+  		
+  		<div class="container d-flex justify-content-around align-items-center">
+  			<div>
+  				<h1 class="count">1500</h1>
+  				<p>Total Students</p>
+  			</div>
+  			<div>
+  				<h1 class="count">600</h1>
+  				<p>Total Faculty</p>
+  			</div>
+  			<div>
+  				<h1 class="count">300</h1>
+  				<p>Partner Organizations</p>
+  			</div>
+  			<div>
+  				<h1 class="count">150</h1>
+  				<p>Total Visitors</p>
+  			</div>
+  		</div>
+  	</section>
+
+	<section class="contactus" id="contactus-div">
+  		<div class="container headings text-center">
+  			<h1 class="text-center font-weight-bold text-capitalize">Contact US</h1>
+  			<p class="text-center text-capitalize">
+  				We are here to help and answer any questions you might have. We are looking forward to hear from you. 
+  			</p>
+  		</div><br/>
+  		
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+  					<form action="/feedback" method="post">
+					  <div class="form-group">
+					    <input type="text" class="form-control" placeholder="Enter Your Name" id="name" name="name" required="required" autocomplete="off">
+					  </div>
+					  <div class="form-group">
+					    <input type="email" class="form-control" placeholder="Enter Your Email ID" id="email" name="email" required="required" autocomplete="off">
+					  </div>
+					  <div class="form-group">
+					    <input type="number" class="form-control" placeholder="Enter Your Mobile No" id="mobileno" name="mobileno" required="required" autocomplete="off">
+					  </div>
+					  <div class="form-group">
+					  	  <textarea class="form-control" rows="4" placeholder="Enter Your Message" id="message" name="message"></textarea>
+					  </div>
+					  <div class="d-flex justify-content-center form-button">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					  </div>
+					</form>
+  				</div>
+  			</div>
+  		</div>
+  	</section>
+
+	<footer class="footersection" id="footer-div">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12 footer-text">
+					<div>
+						<h3>About SIGCE</h3>
+						<p>
+							The Smt. Indira Gandhi College of Engineering is an institute of engineering in Mumbai, India. 
+							<br/>It is affiliated to the Mumbai University. <br>
+							<a href="https://sigce.edu.in/"> Know More </a>
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-12 footer-text">
+					<div>
+						<h3></h3>
+						
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-12 col-12 footer-text">
+					<div>
+						<h3>Navigation Links</h3>
+						<p>
+						    <li><a href="#">Home</a></li>
+					 		<li><a href="#clients-feedback-div">Clubs</a></li>
+							<li><a href="https://sigce.edu.in/about-us/">About</a></li>
+							<li><a href="#contactus-div">Contact Us</a></li>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="mt-5 text-center">
+				<p>
+					Made with <i style="color: #FFB6C1;" class="fa fa-heart" aria-hidden="true"></i><br/>
+					Copyright <i style="color: #606060;" class="fa fa-copyright" aria-hidden="true"></i> 2024 SIGCE. All rights reserved. 
+				</p>
+			</div>
+
+			<div class="scrolltop float-right">
+				<i class="fa fa-arrow-up" onclick="topFunction()" id="myBtn"></i>
+			</div>
+		</div>
+	</footer>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+//mybtn= document.getElementById("myBtn");
+// $(document).ready(function() {
+// 	mybtn.style.display= "none";
+// 	$('#username').keypress(function (e) {
+//         var regex = new RegExp("^[a-zA-Z\s]+$");
+//         var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+//         if (regex.test(str)) {
+//             return true;
+//         }
+//         else
+//         {
+//         e.preventDefault();
+//         alert('Please Enter valid name');
+//         return false;
+//         }
+//     });
+
+// 	$('#mobileno').focusin(function(){
+// 		if(!$('#email').val().includes('.')){
+// 			alert('Please enter valid EmailID');
+// 			$('#email').focus();
+// 		}
+// 	});
+	
+// 	$('#message').focusin(function(){
+// 		if($('#mobileno').val().length<10 || $('#mobileno').val().length>10){
+// 			alert('Please enter valid Mobile No');
+// 			$('#mobileno').focus();
+// 		}
+// 	});
+// });
+	// $('.count').counterUp({
+	// 	delay: 10,
+	// 	time: 3000
+	// })
+	
+	window.onscroll= function()
+	{
+		scrollFunction()
+	};	
+	function scrollFunction(){
+		if(document.body.scrollTop>20 || document.documentElement.scrollTop>20){
+			mybtn.style.display= "block";
+		}	
+		else{
+			mybtn.style.display= "none";
+		}
+	}
+	 
+	function topFunction(){
+		document.documentElement.scrollTop=0;  
+	}
+	
+</script>
+
+  </body>
+</html>

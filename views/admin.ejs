@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adminage title </title>
+    <style>
+         /* Body and General Styles */
+         body {
+            margin: 0px;
+            background: linear-gradient(135deg, #b1def1, #bfc3ef);
+            color: #121111;
+            font-family: 'Roboto';
+        }
+
+        header {
+            background: linear-gradient(150deg, #f8f9fa, #cccecf);
+            padding: 5px 0px;
+            font-size: 22px;
+            box-shadow: 0px 0px;
+        }
+        ul.default {
+            list-style-type: disc;
+        }
+
+        li {
+            display: inline-block;
+            text-align: right;
+            padding: 0px 7px;
+            font-size: 24px;
+        } 
+        .clients-feedback {
+            width: 100%;
+            /* height: 135vh; */
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 5px;
+                width: 100%;
+                max-width: 1000px;
+            }
+
+                .card {
+                    text-align: center;
+                    background-color: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    padding: 10px;
+                    transition: transform 0.2s, box-shadow 0.2s;
+                    /* height: 410px; */
+                }
+
+                .btn2{
+                    background-color: rgb(94, 128, 239); /* Green */
+                border: none;
+                color: white;
+                padding: 8px 18px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                }
+
+                .card h2 {
+                    font-size: 1.5rem;
+                    color: #333;
+                    margin-bottom: 10px;
+                }
+                .card>img{
+                    margin-top: 10px;
+                    height: 200px;
+                    width: 274px;
+                }
+                .card p {
+                    font-size: 1rem;
+                    color: #555;
+                }
+
+                .card:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                }
+                .new2:hover{
+                    background-color: #ff4747;
+                    transform: translateY(-10px);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/clubs">Home</a></li>
+                <li><a href="/clubs#clients-feedback-div">All Clubs</a></li>
+                <li><a href="https://sigce.edu.in/about-us/">About</a></li>
+                <li><a href="/clubs#contactus-div">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2 style="text-align: center; font-size: 40px;">Clubs</h2>
+    <section class="clients-feedback" id="clients-feedback-div">
+        <div class="card-container">
+              <%for(let club of clubs){%>
+                  <div class="card">
+                      <!-- <i class="fas fa-cogs"></i> -->
+                      <img src="<%= club.clubImages %>" alt="">
+                      <h2><%= club.clubName %></h2>
+                      <p><%= club.clubDescription %></p>
+                      <br>
+                      <form method="get" action="/clubs/<%= club._id%>">
+                          <button class="btn2">See in Details</button>
+                      </form>
+                    <br>
+                    <form method="post" action="/clubs/<%= club._id %>/?_method=DELETE">
+                        <button class="btn2">Delete</button>
+                    </form>
+                    <br>
+                  </div>
+              <% } %>
+          </div>
+          <hr>
+          <h2 style="text-align: center; font-size: 40px;">Feedbacks</h2>
+          <div class="card-container">
+            <%for(let feedback of feedbacks){%>
+                <div class="card">
+                    <h2><b>Name : </b><%= feedback.name %></h2>
+                    <p><b>Email :</b> <%= feedback.email %></p>
+                    <p><b>Mobile_No : </b><%= feedback.mobileno %></p>
+                    <p><b>Message : </b><%= feedback.message %></p>
+                  <br>
+                      <!-- Add a form with method POST to handle the delete action -->
+                    <form action="/delete-feedback/<%= feedback._id %>" method="POST">
+                        <button type="submit" class="btn2">Delete</button>
+                    </form>
+                  <br>
+                </div>
+            <% } %>
+          </div>
+      </section>
+
+      
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Body and General Styles */
+        body {
+            margin: 0px;
+            background: linear-gradient(135deg, #b1def1, #bfc3ef);
+            color: #121111;
+            font-family: 'Roboto';
+        }
+
+        header {
+            background: linear-gradient(150deg, #f8f9fa, #cccecf);
+            padding: 5px 0px;
+            font-size: 22px;
+            box-shadow: 0px 0px;
+        }
+
+        ul.default {
+            list-style-type: disc;
+        }
+
+        li {
+            display: inline-block;
+            text-align: right;
+            padding: 0px 7px;
+            font-size: 24px;
+        }
+
+        .club {
+            text-align: left;
+            margin-left: 120px;
+            margin-right: 120px;
+            margin-bottom: 220px;
+        }
+
+        /* h2 {
+            font-size: 40px;
+        } */
+        h2 {
+            font-size: 44px;
+            text-align: center;
+            /* Center the text */
+            background-color: #64b3cd;
+            /* Choose a background color */
+            color: white;
+            /* Text color (contrast with background) */
+            padding: 20px;
+            /* Padding around the text */
+            border-radius: 10px;
+            /* Rounded corners */
+            margin-bottom: 20px;
+            /* Space below the heading */
+            font-weight: bold;
+            /* Bold text */
+        }
+
+        h3 {
+            font-size: 41px;
+            color: blue;
+        }
+
+        /* Image Gallery Styling */
+        .img {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .indiv {
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            text-align: center;
+        }
+
+        img {
+            height: 350px;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 14px;
+            object-fit: cover;
+        }
+
+        p {
+            font-size: 22px;
+        }
+
+        h4 {
+            font-size: 25px;
+        }
+
+        button {
+            font-size: 22px;
+            font-weight: 24px;
+            height: 40px;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        /* Events Section Styling */
+        .events {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .event {
+            display: flex;
+            gap: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            flex-wrap: wrap;
+            /* Allow flexbox to wrap when there's not enough space */
+            justify-content: flex-start;
+            /* Align items from the left */
+            max-width: 100%;
+        }
+
+        /* Ensure content stays aligned to the right of the image */
+        .content {
+            display: flex;
+            flex-direction: column;
+            max-width: 66%;
+            /* Take up the remaining 2/3 of the div */
+            margin-left: 20px;
+            align-self: flex-start;
+            /* Align content to the start of the flex container */
+        }
+
+        .img2 {
+            display: flex;
+            flex-direction: column;
+            max-width: 33%;
+            /* Image takes up 1/3 of the width */
+            padding: 10px;
+            /* Add padding around the image */
+        }
+
+        .indiv2 {
+            margin-bottom: 10px;
+        }
+
+        .indiv2 img {
+            width: 100%;
+            /* Image takes full width of its container */
+            height: auto;
+            object-fit: cover;
+            /* Ensure images maintain their aspect ratio */
+            border-radius: 10px;
+            padding: 7px;
+            /* Add padding around the image */
+        }
+
+        /* Ensure Layout Responsiveness */
+        @media screen and (max-width: 768px) {
+            .event {
+                flex-direction: column;
+                /* Stack images and content vertically */
+                align-items: center;
+            }
+
+            .content {
+                max-width: 100%;
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .img2 {
+                max-width: 100%;
+            }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 150px;
+            /* space between buttons */
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .button-container>form {
+            display: inline-block;
+        }
+
+        /* Styling for buttons */
+        .edit-button,
+        .join-button,
+        .event-button {
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 27px;
+            /* makes text bold */
+            background-color: #216e88;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            height: 80px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effects for buttons */
+        .edit-button:hover,
+        .join-button:hover,
+        .event-button:hover {
+            background-color: #1a5b6f;
+            /* darker shade on hover */
+        }
+
+        .edit-button:focus,
+        .join-button:focus,
+        .event-button:focus {
+            outline: none;
+            /* removes default focus outline */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/clubs">Home</a></li>
+                <li><a href="/clubs#clients-feedback-div">All Clubs</a></li>
+                <li><a href="https://sigce.edu.in/about-us/">About</a></li>
+                <li><a href="/clubs#contactus-div">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="club">
+        <h2>
+            <%= club.clubName %>
+        </h2>
+
+        <!-- Display club images -->
+        <div class="img">
+            <% if (club.clubImages && Array.isArray(club.clubImages)) { %>
+                <% club.clubImages.forEach(function(imageUrl) { %>
+                    <div class="indiv">
+                        <img src="<%= imageUrl %>" alt="Club Image">
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No images available.</p>
+                            <% } %>
+        </div>
+
+        <h4>Club Information:</h4>
+        <p>
+            <%= club.clubDescription %>
+        </p>
+        <hr>
+
+        <h4>Club Department:</h4>
+        <p>
+            <%= club.branch %>
+        </p>
+        <hr>
+
+        <!-- Display Faculty Coordinators -->
+        <h4>Faculty Coordinators:</h4>
+        <ul class="default">
+            <% club.facultyCoordinators.forEach(function(faculty) { %>
+                <li style="margin-bottom: 10px;">
+                    <%= faculty.name %> : <%= faculty.role %>
+                </li><br>
+                <% }); %>
+        </ul>
+        <hr>
+
+        <!-- Display Student Coordinators -->
+        <h4>Student Coordinators:</h4>
+        <ul class="default">
+            <% club.studentCoordinators.forEach(function(student) { %>
+                <li style="margin-bottom: 10px;">
+                    <%= student.name %> : <%= student.role %>
+                </li><br>
+                <% }); %>
+        </ul>
+        <hr>
+
+        <h4>Contact Email:</h4>
+        <p>
+            <%= club.contactEmail %>
+        </p>
+        <hr>
+
+        <h4>Contact Phone No:</h4>
+        <p>
+            <%= club.contactPhone %>
+        </p>
+        <hr>
+        <!-- <form method="post" action="/clubs/<%= club._id %>/?_method=DELETE">
+            <button>Delete</button>
+        </form>
+        <br> -->
+        <!-- Buttons for editing, deleting, and joining the club -->
+        <div class="button-container">
+            <!-- Edit Button -->
+            <form method="get" action="/clubs/<%= club._id %>/edit" class="edit-form">
+                <button type="submit" class="edit-button" id="editButton">Edit</button>
+            </form>
+
+            <!-- Join Club Button -->
+            <form method="post" action="/clubs/<%= club._id %>/join" class="join-form">
+                <button type="submit" class="join-button" id="joinButton">Join Club</button>
+            </form>
+
+            <!-- Add Club Events Button -->
+            <form method="post" action="/clubs/<%= club._id %>/event" class="event-form">
+                <button type="submit" class="event-button" id="eventButton">Add Club Events</button>
+            </form>
+        </div>
+        <!-- Display Events (New events at the top) -->
+        <h4>Events Organised by <%= club.clubName %>
+        </h4>
+        <div class="events">
+            <% if (event && event.length> 0) { %>
+                <!-- Reverse the order of events to display the newest first -->
+                <% event.reverse().forEach(function(event) { %>
+                    <div class="event">
+                        <!-- Event Image(s) on the left -->
+                        <% if (event.eventImages && event.eventImages.length> 0) { %>
+                            <div class="img2">
+                                <% event.eventImages.forEach(function(imageUrl) { %>
+                                    <div class="indiv2">
+                                        <img src="<%= imageUrl %>" alt="Event Image">
+                                    </div>
+                                    <% }); %>
+                            </div>
+                            <% } %>
+
+                                <!-- Event Details on the right -->
+                                <div class="content">
+                                    <h3>
+                                        <%= event.eventName %>
+                                    </h3>
+                                    <p><strong>Date:</strong>
+                                        <%= event.eventDate.toDateString() %>
+                                    </p>
+                                    <p><strong>Description:</strong>
+                                        <%= event.detailedDescription %>
+                                    </p>
+                                </div>
+                    </div>
+                    <% }); %>
+                        <% } else { %>
+                            <p>No events available.</p>
+                            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

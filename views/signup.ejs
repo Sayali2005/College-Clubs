@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+    </link>
+    <style>
+        /* Basic styles for form container */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        /* Styles for form fields */
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Button styles */
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #216e88;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #216e88;
+        }
+
+        /* Styling for login/signup link */
+        p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        p a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        .close-btn {
+            margin-left: 10px;
+            text-align: left;
+            font-size: 30px;
+            /* color: #333; */
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .close-btn:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cross (X) button -->
+    <button class="close-btn" onclick="goBack()">&#10006;</button>
+
+    <div class="form-container">
+
+        <div id="signupForm">
+            <h1>Sign Up</h1>
+            <!-- Check if error is present and display it -->
+    <% if (error) { %>
+        <div style="color: red; font-weight: bold;">
+            <%= error %>
+        </div>
+    <% } %>
+            <form method="post" action="/signUp" id="collegeIDForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="year">Year:</label>
+                <select id="year" name="year" required>
+                    <option value="fe">First Year (FE)</option>
+                    <option value="se">Second Year (SE)</option>
+                    <option value="te">Third Year (TE)</option>
+                    <option value="be">Final Year (BE)</option>
+                </select>
+
+                <label for="branch">Branch:</label>
+                <select id="branch" name="branch" required>
+                    <option value="aids">AI&DS</option>
+                    <option value="computer">Computer</option>
+                    <option value="electrical">Electrical </option>
+                    <option value="iot">IOT</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="aiml">AI&ML</option>
+                    <!-- Add other branches as necessary -->
+                </select>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <p>Already have an account? <a href="/login">Login here</a></p>
+        </div>
+
+    </div>
+    <script>
+        function goBack() {
+            // Go back to the previous page in the browser history
+            window.history.back();
+        }
+        document.getElementById('collegeIDForm').addEventListener('submit', function(event) {
+      const collegeID = document.getElementById('collegeID').value;
+      const regex = /^\d{4}[a-zA-Z]{2}\d{2}[a-zA-Z]@sigce\.edu\.in$/;
+
+      if (!regex.test(collegeID)) {
+        alert('Invalid College ID format!');
+        event.preventDefault();  // Prevent form submission
+      }
+    });
+    </script>
+</body>
+
+</html>

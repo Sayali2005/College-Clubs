@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Creation Form</title>
+    <style>
+        /* Basic styles for form container */
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Styles for form fields */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2fccd0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            background-color: rgb(147, 254, 251);
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Button styles */
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #216e88;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #216e88;
+        }
+
+        /* Coordinator styles */
+        .coordinator {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .coordinator input {
+            flex: 1;
+        }
+
+        /* Styling for dynamic fields */
+        #studentCoordinators,
+        #facultyCoordinators {
+            margin-bottom: 15px;
+        }
+
+        */ body {
+            font-family: Arial, sans-serif;
+            background-color: #2fccd0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            background-color: rgb(147, 254, 251);
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #216e88;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #216e88;
+        }
+
+        .coordinator {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .coordinator input {
+            flex: 1;
+        }
+
+        #studentCoordinators,
+        #facultyCoordinators {
+            margin-bottom: 15px;
+        }
+
+        .close-btn {
+            margin-left: 10px;
+            text-align: left;
+            font-size: 30px;
+            /* color: #333; */
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .close-btn:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cross (X) button -->
+    <button class="close-btn" onclick="goBack()">&#10006;</button>
+
+    <div class="form-container">
+        <h1>Create a New Club</h1>
+        <form id="clubForm" method="post" action="/clubs" enctype="multipart/form-data">
+
+            <!-- Club Name -->
+            <label for="clubName">Club Name:</label>
+            <input type="text" id="clubName" name="clubName" required>
+
+            <!-- Club Description -->
+            <label for="clubDescription">Club Information:</label>
+            <textarea type="text" id="clubDescription" name="clubDescription" rows="4" required></textarea>
+
+            <!-- Club Related Images -->
+            <label for="clubImages">Upload Club Images:</label>
+            <input type="file" id="clubImages" name="clubImages" multiple>
+
+            <label for="branch">Branch:</label>
+            <select id="branch" name="branch" required>
+                <option value="aids">AI&DS</option>
+                <option value="computer">Computer</option>
+                <option value="electrical">Electrical </option>
+                <option value="iot">IOT</option>
+                <option value="mechanical">Mechanical</option>
+                <option value="aiml">AI&ML</option>
+                <!-- Add other branches as necessary -->
+            </select>
+
+            <!-- Student Coordinators -->
+            <label>Student Coordinators:</label>
+            <div id="studentCoordinators">
+                <div class="coordinator">
+                    <input type="text" name="studentName[]" placeholder="Student Name" required>
+                    <input type="text" name="studentRole[]" placeholder="Role" required>
+                </div>
+            </div>
+            <button type="button" onclick="addStudentCoordinator()">+ Add More Students</button>
+
+            <!-- Faculty Coordinators -->
+            <label>Faculty Coordinators:</label>
+            <div id="facultyCoordinators">
+                <div class="coordinator">
+                    <input type="text" name="facultyName[]" placeholder="Faculty Name" required>
+                    <input type="text" name="facultyRole[]" placeholder="Role" required>
+                </div>
+            </div>
+            <button type="button" onclick="addFacultyCoordinator()">+ Add More Faculty</button>
+
+            <!-- Contact Information -->
+            <label for="contactEmail">Contact Email:</label>
+            <input type="email" id="contactEmail" name="contactEmail" required>
+
+            <label for="contactPhone">Contact Phone:</label>
+            <input type="tel" id="contactPhone" name="contactPhone" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        // Function to dynamically add more student coordinators
+        function addStudentCoordinator() {
+            const studentDiv = document.createElement('div');
+            studentDiv.classList.add('coordinator');
+
+            // Input for student name
+            const studentName = document.createElement('input');
+            studentName.setAttribute('type', 'text');
+            studentName.setAttribute('name', 'studentName[]');  // Adding square brackets to name
+            studentName.setAttribute('placeholder', 'Student Name');
+            studentName.required = true;
+
+            // Input for student role
+            const studentRole = document.createElement('input');
+            studentRole.setAttribute('type', 'text');
+            studentRole.setAttribute('name', 'studentRole[]');  // Adding square brackets to name
+            studentRole.setAttribute('placeholder', 'Role');
+            studentRole.required = true;
+
+            // Add the inputs to the div
+            studentDiv.appendChild(studentName);
+            studentDiv.appendChild(studentRole);
+
+            // Append the new coordinator to the form
+            document.getElementById('studentCoordinators').appendChild(studentDiv);
+        }
+
+        // Function to dynamically add more faculty coordinators
+        function addFacultyCoordinator() {
+            const facultyDiv = document.createElement('div');
+            facultyDiv.classList.add('coordinator');
+
+            // Input for faculty name
+            const facultyName = document.createElement('input');
+            facultyName.setAttribute('type', 'text');
+            facultyName.setAttribute('name', 'facultyName[]');  // Adding square brackets to name
+            facultyName.setAttribute('placeholder', 'Faculty Name');
+            facultyName.required = true;
+
+            // Input for faculty role
+            const facultyRole = document.createElement('input');
+            facultyRole.setAttribute('type', 'text');
+            facultyRole.setAttribute('name', 'facultyRole[]');  // Adding square brackets to name
+            facultyRole.setAttribute('placeholder', 'Role');
+            facultyRole.required = true;
+
+            // Add the inputs to the div
+            facultyDiv.appendChild(facultyName);
+            facultyDiv.appendChild(facultyRole);
+
+            // Append the new coordinator to the form
+            document.getElementById('facultyCoordinators').appendChild(facultyDiv);
+        }
+        function goBack() {
+            // Go back to the previous page in the browser history
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

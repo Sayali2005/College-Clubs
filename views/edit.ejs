@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Club Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #216e88;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #216e88;
+        }
+
+        .coordinator {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .coordinator input {
+            flex: 1;
+        }
+
+        #studentCoordinators,
+        #facultyCoordinators {
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Edit Club Information</h1>      
+        <form id="clubForm" method="POST" action="/clubs/<%= club._id %>?_method=PUT">
+            <!-- Hidden _method field to simulate PUT request -->
+            <input type="hidden" name="_method" value="PUT">
+
+            <!-- Club Name -->
+            <label for="clubName">Club Name:</label>
+            <input type="text" id="clubName" name="clubName" value="<%= club.clubName %>" required>
+
+            <!-- Club Description -->
+            <label for="clubDescription">Club Information:</label>
+            <textarea id="clubDescription" name="clubDescription" rows="4" required><%= club.clubDescription %></textarea>
+
+            <!-- Club Related Images -->
+            <label for="clubImages">Upload Club Images:</label>
+            <input type="text" id="clubImages" name="clubImages" value="<%= club.clubImages.join(', ') %>">
+
+            <!-- Branch -->
+            <label for="branch">Branch:</label>
+            <select id="branch" name="branch" required>
+                <option value="aids" <%= club.branch === 'aids' ? 'selected' : '' %>>AI&DS</option>
+                <option value="computer" <%= club.branch === 'computer' ? 'selected' : '' %>>Computer</option>
+                <option value="electrical" <%= club.branch === 'electrical' ? 'selected' : '' %>>Electrical</option>
+                <option value="iot" <%= club.branch === 'iot' ? 'selected' : '' %>>IOT</option>
+                <option value="mechanical" <%= club.branch === 'mechanical' ? 'selected' : '' %>>Mechanical</option>
+                <option value="aiml" <%= club.branch === 'aiml' ? 'selected' : '' %>>AI&ML</option>
+            </select>
+
+            <!-- Student Coordinators -->
+            <label>Student Coordinators:</label>
+            <div id="studentCoordinators">
+                <% club.studentCoordinators.forEach(function(coordinator, index) { %>
+                    <div class="coordinator">
+                        <input type="text" name="studentName[]" value="<%= coordinator.name %>" placeholder="Student Name" required>
+                        <input type="text" name="studentRole[]" value="<%= coordinator.role %>" placeholder="Role" required>
+                    </div>
+                <% }); %>
+            </div>
+            <button type="button" onclick="addStudentCoordinator()">+ Add More Students</button>
+
+            <!-- Faculty Coordinators -->
+            <label>Faculty Coordinators:</label>
+            <div id="facultyCoordinators">
+                <% club.facultyCoordinators.forEach(function(coordinator, index) { %>
+                    <div class="coordinator">
+                        <input type="text" name="facultyName[]" value="<%= coordinator.name %>" placeholder="Faculty Name" required>
+                        <input type="text" name="facultyRole[]" value="<%= coordinator.role %>" placeholder="Role" required>
+                    </div>
+                <% }); %>
+            </div>
+            <button type="button" onclick="addFacultyCoordinator()">+ Add More Faculty</button>
+
+            <!-- Contact Information -->
+            <label for="contactEmail">Contact Email:</label>
+            <input type="email" id="contactEmail" name="contactEmail" value="<%= club.contactEmail %>" required>
+
+            <label for="contactPhone">Contact Phone:</label>
+            <input type="tel" id="contactPhone" name="contactPhone" value="<%= club.contactPhone %>" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        // Function to dynamically add more student coordinators
+        function addStudentCoordinator() {
+            const studentDiv = document.createElement('div');
+            studentDiv.classList.add('coordinator');
+
+            const studentName = document.createElement('input');
+            studentName.setAttribute('type', 'text');
+            studentName.setAttribute('name', 'studentName[]');
+            studentName.setAttribute('placeholder', 'Student Name');
+            studentName.required = true;
+
+            const studentRole = document.createElement('input');
+            studentRole.setAttribute('type', 'text');
+            studentRole.setAttribute('name', 'studentRole[]');
+            studentRole.setAttribute('placeholder', 'Role');
+            studentRole.required = true;
+
+            studentDiv.appendChild(studentName);
+            studentDiv.appendChild(studentRole);
+
+            document.getElementById('studentCoordinators').appendChild(studentDiv);
+        }
+
+        // Function to dynamically add more faculty coordinators
+        function addFacultyCoordinator() {
+            const facultyDiv = document.createElement('div');
+            facultyDiv.classList.add('coordinator');
+
+            const facultyName = document.createElement('input');
+            facultyName.setAttribute('type', 'text');
+            facultyName.setAttribute('name', 'facultyName[]');
+            facultyName.setAttribute('placeholder', 'Faculty Name');
+            facultyName.required = true;
+
+            const facultyRole = document.createElement('input');
+            facultyRole.setAttribute('type', 'text');
+            facultyRole.setAttribute('name', 'facultyRole[]');
+            facultyRole.setAttribute('placeholder', 'Role');
+            facultyRole.required = true;
+
+            facultyDiv.appendChild(facultyName);
+            facultyDiv.appendChild(facultyRole);
+
+            document.getElementById('facultyCoordinators').appendChild(facultyDiv);
+        }
+    </script>
+</body>
+</html>
