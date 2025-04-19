@@ -103,45 +103,50 @@ app.post("/clubs/join",async(req,res,next)=>{
     }
 });
 
-
-//Signup Route
-app.get("/signUp",async(req,res)=>{
-    res.render("signup.ejs");
+// Signup Page (GET)
+app.get("/signUp", async (req, res) => {
+    res.render("signup.ejs", { error: null }); // Pass default error to avoid EJS crash
 });
 
+// Signup Handler (POST)
 app.post("/signUp", async (req, res) => {
-    let { name, email, password, year, branch } = req.body;
-    
-    try {
-        // Regex pattern for the College ID
-        const regex = /^\d{4}[a-zA-Z]{2}\d{2}[a-zA-Z]@sigce\.edu\.in$/;
+    let { name, email, collegeID, password, year, branch } = req.body;
 
-        // Validate the input
-        if (!regex.test(email)) {
+    try {
+        // Validate the College ID format
+        const regex = /^\d{4}[a-zA-Z]{2}\d{2}[a-zA-Z]@sigce\.edu\.in$/;
+        if (!regex.test(collegeID)) {
             return res.render("signup.ejs", {
                 error: "Invalid College ID format! Please follow the correct format."
             });
         }
 
-        // Create a new student object
+        // Check if email is already registered
+        const existingStudent = await SignUp.findOne({ email: email });
+        if (existingStudent) {
+            return res.render("signup.ejs", {
+                error: "Email is already registered. Please use a different one or log in."
+            });
+        }
+
+        // Save the new student
         let newStudent = new SignUp({
-            name: name,
-            email: email,
-            password: password,
-            year: year,
-            branch: branch,
+            name,
+            email,
+            collegeID,
+            password,
+            year,
+            branch,
         });
 
-        // Save the student data to MongoDB
         await newStudent.save();
         console.log("Data was saved!!");
 
-        // Redirect to the clubs page after successful sign-up
+        // Redirect after success
         res.redirect("/clubs");
-        
+
     } catch (err) {
-        console.log(err);
-        // If there is an error, render the signup page with an error message
+        console.log("Signup error:", err);
         res.render("signup.ejs", {
             error: "There was an issue with saving your data. Please try again."
         });
@@ -502,18 +507,20 @@ app.get("/deptClubs/iot",async(req,res)=>{
     res.render("./deptClubs/iot_clubs.ejs",{clubs});
 });
 app.get("/deptClubs/electrical",async(req,res,next)=>{
-    try{
-        let clubs = await Club.find({branch:"electrical"});
-         // Query the clubs by the branch value
-         if (!clubs || clubs.length === 0) {  // Check if no clubs were found
-            console.log("404", "Club not found!");
-            return res.status(404).send("No clubs found for this branch.");
-        }
-        res.render("./deptClubs/electrical_clubs.ejs",{clubs});
-    }
-    catch(err){
-        next(err);  // Pass the error to the next middleware
-    } 
+    // try{
+    //     let clubs = await Club.find({branch:"electrical"});
+    //      // Query the clubs by the branch value
+    //      if (!clubs || clubs.length === 0) {  // Check if no clubs were found
+    //         console.log("404", "Club not found!");
+    //         return res.status(404).send("No clubs found for this branch.");
+    //     }
+    //     res.render("./deptClubs/electrical_clubs.ejs",{clubs});
+    // }
+    // catch(err){
+    //     next(err);  // Pass the error to the next middleware
+    // } 
+    let clubs = await Club.find({branch:"electrical"});
+    res.render("./deptClubs/electrical_clubs.ejs",{clubs});
 });
 app.get("/deptClubs/mechanical",async(req,res)=>{
     let clubs = await Club.find({branch:"mechanical"});
@@ -524,17 +531,19 @@ app.get("/deptClubs/aids",async(req,res)=>{
     res.render("./deptClubs/ai-ds_clubs.ejs",{clubs});
 });
 app.get("/deptClubs/aiml",async(req,res,next)=>{
-    try{
-        let clubs = await Club.find({branch:"aiml"}); // Query the clubs by the branch value
-         if (!clubs || clubs.length === 0) {  // Check if no clubs were found
-            console.log("404", "Club not found!");
-            return res.status(404).send("No clubs found for this branch.");
-        }
-        res.render("./deptClubs/ai-ml_clubs.ejs",{clubs});
-    }
-    catch(err){
-        next(err);  // Pass the error to the next middleware
-    }   
+    // try{
+    //     let clubs = await Club.find({branch:"aiml"}); // Query the clubs by the branch value
+    //      if (!clubs || clubs.length === 0) {  // Check if no clubs were found
+    //         console.log("404", "Club not found!");
+    //         return res.status(404).send("No clubs found for this branch.");
+    //     }
+    //     res.render("./deptClubs/ai-ml_clubs.ejs",{clubs});
+    // }
+    // catch(err){
+    //     next(err);  // Pass the error to the next middleware
+    // }   
+    let clubs = await Club.find({branch:"aiml"});
+    res.render("./deptClubs/ai-ml_clubs.ejs",{clubs});
 });
 
 //ShowDeptClubs

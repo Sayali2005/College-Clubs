@@ -396,7 +396,7 @@ form:hover .form-button button {
 }
 
 .btn2{
-    background-color: rgb(94, 128, 239); /* Green */
+    background-color: #16c9f6; /* Green */
   border: none;
   color: white;
   padding: 10px 22px;
@@ -433,6 +433,23 @@ form:hover .form-button button {
     margin-bottom: 10px;
     display: inline-block;
 }
+.dept-club-link {
+    font-size: 25px;
+    color: black;
+    background-color: #87eaf7;
+    border: 2px solid black;
+    padding: 4px 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dept-club-link:hover {
+    background-color: #5ec8da;
+    color: white;
+}
+
   </style>
 </head>
   <body>
@@ -447,7 +464,7 @@ form:hover .form-button button {
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav ml-auto text-uppercase">
 		      <li class="nav-item active">
-		        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="#clients-feedback-div">Clubs</a>
@@ -462,7 +479,7 @@ form:hover .form-button button {
 		        <a class="nav-link" href="/login">Login</a>
 		      </li> 
               <li class="nav-item">
-		        <a class="nav-link" href="/signUp">SignUp</a>
+		        <a class="nav-link" href="/signup">SignUp</a>
 		      </li> 
               <li class="nav-item">
 		        <a class="nav-link" href="/alogin">Admin_Login</a>
@@ -530,7 +547,7 @@ form:hover .form-button button {
   			<p class="text-center text-capitalize">
   				SIGCE has various technical, cultural, social clubs
   			</p>
-            <a href="/deptClubs" class="new2" style="font-size: 25px; color: black; background-color: #87eaf7; border: 2px solid black; padding: 4px; ">Explore Clubs as per Departments</a>
+              <a href="/deptClubs" class="dept-club-link">Explore Clubs as per Departments</a>
   		</div><br/>
 		  <div class="card-container">
                 <%for(let club of clubs){%>
@@ -687,10 +704,10 @@ form:hover .form-button button {
 					<div>
 						<h3>Navigation Links</h3>
 						<p>
-						    <li><a href="#">Home</a></li>
-					 		<li><a href="#clients-feedback-div">Clubs</a></li>
+						    <li><a href="/clubs">Home</a></li>
+					 		<li><a href="/clubs#clients-feedback-div">Clubs</a></li>
 							<li><a href="https://sigce.edu.in/about-us/">About</a></li>
-							<li><a href="#contactus-div">Contact Us</a></li>
+							<li><a href="/clubs#contactus-div">Contact Us</a></li>
 						</p>
 					</div>
 				</div>
