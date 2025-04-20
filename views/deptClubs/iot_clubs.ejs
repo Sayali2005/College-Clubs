@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IOT</title>
     <style>
-          body {
+        body {
             background-image: url(./bg.mech.jpg);
             background-repeat: no-repeat;
             background-size: cover;
@@ -18,9 +19,9 @@
         }
 
         header {
-            background: linear-gradient(150deg, #f8f9fa, #cccecf);
+            background: linear-gradient(150deg, #9bcbec, #169fe4);
             padding: 5px 0px;
-            font-size: 18px;
+            font-size: 23px;
             box-shadow: 0px 0px;
         }
 
@@ -36,95 +37,127 @@
             margin: 20px;
             color: royalblue;
         }
+        a {
+            text-decoration: none;
+            padding: 8px 14px;
+            color: #333;
+            font-weight: bold;
+            border-radius: 6px;
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
 
+        a:hover {
+            background-color: royalblue;
+            color: white;
+            transform: scale(1.05);
+            /* slight zoom */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* soft shadow */
+            text-decoration: none;
+        }
         p {
             font-size: 20px;
             margin: 20px;
             color: black;
         }
 
-        .card-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 10px;
-    justify-content:space-around;
-    width: 100%;
-}
-.card
-{
-    background-color: white;
-    border-radius: 8px;
-    width: 500px;
-    text-align: center;
-}
-.card:hover{
-    transform: scale(1.02);
-}
-img{
-    margin-top: 20px;
-    width: 460px;
-    height: 350px;
-    border-radius: 8px 8px 0px 0px;
-}
-.card b{
-    display: block;
-    font-size: 26px;
-    margin-top: 10px;
-    color: black;
-}
-.card p{
-    font-size: 22px;
-    color: black;
-    margin: 5px 0px 15px 0px;
-}
-.card button{
-    background-color: #99d6f0;
-    font-size: 22px;
-    font-weight: 24px;
-    height: 40px;
-    width: 200px;
-    margin-bottom: 20px;
-}
-.card button:hover{
-    color: #50d1c0;
-    background: black;
-    text-decoration: none;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-}
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 10px;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            width: 500px;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        img {
+            margin-top: 20px;
+            width: 460px;
+            height: 350px;
+            border-radius: 8px 8px 0px 0px;
+        }
+
+        .card b {
+            display: block;
+            font-size: 26px;
+            margin-top: 10px;
+            color: black;
+        }
+
+        .card p {
+            font-size: 22px;
+            color: black;
+            margin: 5px 0px 15px 0px;
+        }
+
+        .card button {
+            background-color: #99d6f0;
+            font-size: 22px;
+            font-weight: 24px;
+            height: 40px;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .card button:hover {
+            color: #50d1c0;
+            background: black;
+            text-decoration: none;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="file:///C:/MP%201-A/index.html">Home</a></li>
+                <li><a href="/clubs">Home</a></li>
                 <li><a href="https://sigce.edu.in/about-us/">About</a></li>
-                <li><a href="file:///C:/MP%201-A/index.html#contactus-div">Contact Us</a></li>
-                <li><a href="./club.html">All Clubs</a></li>
+                <li><a href="/clubs#contactus-div">Contact Us</a></li>
+                <li><a href="/clubs#clients-feedback-div">All Clubs</a></li>
             </ul>
         </nav>
     </header>
-    <i><h1>IOT Department Clubs</h1></i>
-    <p>This are the clubs created by IOT department students. Your warm welcome to the clubs you can join as per your interests. </p>
+    <i>
+        <h1>IOT Department Clubs</h1>
+    </i>
+    <p>This are the clubs created by IOT department students. Your warm welcome to the clubs you can join as per your
+        interests. </p>
     <br><br>
-        <div class="card-container">
-            <%for(let club of clubs){%>
-                <div class="card">
-                    <!-- <i class="fas fa-cogs"></i> -->
-                    <img src="<%= club.clubImages %>" alt="">
-                    <h2>
-                        <%= club.clubName %>
-                    </h2>
-                    <p>
-                        <%= club.clubDescription %>
-                    </p>
-                    <br>
-                    <form method="get" action="/clubs/<%= club._id%>">
-                        <button class="btn2">See in Details</button>
-                    </form>
-                </div>
-                <% } %>
-        </div>
+    <div class="card-container">
+        <%for(let club of clubs){%>
+            <div class="card">
+                <!-- <i class="fas fa-cogs"></i> -->
+                <img src="<%= club.clubImages %>" alt="">
+                <h2>
+                    <%= club.clubName %>
+                </h2>
+                <p>
+                    <%= club.clubDescription %>
+                </p>
+                <br>
+                <form method="get" action="/clubs/<%= club._id%>">
+                    <button class="btn2">See in Details</button>
+                </form>
+            </div>
+            <% } %>
+    </div>
 </body>
+
 </html>

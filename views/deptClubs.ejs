@@ -1,119 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departments</title>
     <style>
-        body
-{
-    font-family: 'Arial';
-    background: linear-gradient(135deg, #99d6f0, #a5abea);
-    color: #121111;
-    justify-content: space-around;
-}
+        body {
+            font-family: 'Arial';
+            background: linear-gradient(135deg, #99d6f0, #a5abea);
+            color: #121111;
+            justify-content: space-around;
+        }
 
-header{
-   background: linear-gradient(150deg, #f8f9fa, #cccecf);
-   padding: 5px 0px;
-   font-size: 18px;
-   box-shadow: 0px 0px;
-}
+        header {
+            background: linear-gradient(150deg, #9bcbec, #169fe4);
+            padding: 5px 0px;
+            font-size: 23px;
+            box-shadow: 0px 0px;
+        }
 
-li{
-   display: inline-block;
-   text-align: right;
-   list-style: none;
-   padding: 0px 7px;
-}
+        li {
+            display: inline-block;
+            text-align: right;
+            list-style: none;
+            padding: 0px 7px;
+        }
 
-.dept
-{
-   display: grid;
-   grid-template-columns:repeat(3,1fr);
-   grid-template-rows:repeat(2,1fr);
-   gap: 15px;
-   padding: 7px;
-   width: 100%;
-   height: auto;
-   margin: 15px 0;
-   text-align: center;
-   justify-content: center;
+        h1 {
+            font-size: 45px;
+            margin: 20px;
+            color: royalblue;
+        }
 
-}
-.dept .card
-{
-   background: linear-gradient(150deg, #16c9f6, #4187d7);
-   font-size: 20px;
-   border: medium none;
-   padding: 25px !important;
-   border-radius: 8px;
-   margin-left: 24px;
-   width: 350px;
-   height:200px ;
-   text-align: center;
-   transition: 0.2s;
-}
+        a {
+            text-decoration: none;
+            padding: 8px 14px;
+            color: #333;
+            font-weight: bold;
+            border-radius: 6px;
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
 
-#comps
-{
-   grid-row: 1;
-   grid-column: 1;
-}
+        a:hover {
+            background-color: royalblue;
+            color: white;
+            transform: scale(1.05);
+            /* slight zoom */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* soft shadow */
+            text-decoration: none;
+        }
 
-#ds
-{
-   grid-row: 1;
-   grid-column: 2;
-}
+        .dept {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
+            padding: 7px;
+            width: 100%;
+            height: auto;
+            margin: 15px 0;
+            text-align: center;
+            justify-content: center;
 
-#iot
-{
-   grid-row: 1;
-   grid-column: 3;
-}
+        }
 
-#elec
-{
-   grid-row: 2;
-   grid-column: 1;
-}
+        .dept .card {
+            background: linear-gradient(150deg, #16c9f6, #4187d7);
+            font-size: 20px;
+            border: medium none;
+            padding: 25px !important;
+            border-radius: 8px;
+            margin-left: 24px;
+            width: 350px;
+            height: 200px;
+            text-align: center;
+            transition: 0.2s;
+        }
 
-#ml
-{
-   grid-row: 2;
-   grid-column: 2;
-}
+        #comps {
+            grid-row: 1;
+            grid-column: 1;
+        }
 
-#mech
-{
-   grid-row: 2;
-   grid-column: 3;
-}
+        #ds {
+            grid-row: 1;
+            grid-column: 2;
+        }
 
-.dept .card:hover
-{
-   box-shadow: 0px 0px;
-   transform: translateY(-20px);
-}
+        #iot {
+            grid-row: 1;
+            grid-column: 3;
+        }
 
-button {
-   background: none;
-   color: #060606;
-   font-size: 20px;
-   cursor: pointer;
-   border: medium none;
-   transition: background 0.3s, transform 0.2s;
-}
+        #elec {
+            grid-row: 2;
+            grid-column: 1;
+        }
+
+        #ml {
+            grid-row: 2;
+            grid-column: 2;
+        }
+
+        #mech {
+            grid-row: 2;
+            grid-column: 3;
+        }
+
+        .dept .card:hover {
+            box-shadow: 0px 0px;
+            transform: translateY(-20px);
+        }
+
+        button {
+            background: none;
+            color: #060606;
+            font-size: 20px;
+            cursor: pointer;
+            border: medium none;
+            transition: background 0.3s, transform 0.2s;
+        }
 
 
-button:hover {
-   background: none;
-   transform: scale(1.05);
-}
+        button:hover {
+            background: none;
+            transform: scale(1.05);
+        }
     </style>
-    
+
 </head>
+
 <body>
     <header>
         <nav>
@@ -125,51 +147,52 @@ button:hover {
             </ul>
         </nav>
     </header>
-        
-  <div class="dept">
-            <div class="card">
-                <img src="https://i.ytimg.com/vi/CxGSnA-RTsA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB81zDsfTaH6F6crVu5J-kDJDouAQ"
+
+    <div class="dept">
+        <div class="card">
+            <img src="https://i.ytimg.com/vi/CxGSnA-RTsA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB81zDsfTaH6F6crVu5J-kDJDouAQ"
                 width="300" height="170"><br>
-                <form method="get" action="/deptClubs/computer">
-                    <button id="comps">Computer department clubs</button> 
-                </form>
-            </div>
-            <div class="card">
-                <img src="https://media.licdn.com/dms/image/v2/D4E12AQFT55WRyNALSg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1709391911530?e=2147483647&v=beta&t=XZZZnTlq24dB1XfoJU2qxrzSApJHjKyFyhxTLcPDXpo"
+            <form method="get" action="/deptClubs/computer">
+                <button id="comps">Computer department clubs</button>
+            </form>
+        </div>
+        <div class="card">
+            <img src="https://media.licdn.com/dms/image/v2/D4E12AQFT55WRyNALSg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1709391911530?e=2147483647&v=beta&t=XZZZnTlq24dB1XfoJU2qxrzSApJHjKyFyhxTLcPDXpo"
                 width="300" height="170"><br>
-                <form method="get" action="/deptClubs/aids">
-                    <button id="ds">AI-DS department clubs</button>
-                </form>
-            </div>
-            <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh3f9vow0Jwl4domc8ExJwabUOu7WWSCIcgA&s"
+            <form method="get" action="/deptClubs/aids">
+                <button id="ds">AI-DS department clubs</button>
+            </form>
+        </div>
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh3f9vow0Jwl4domc8ExJwabUOu7WWSCIcgA&s"
                 width="300" height="170"><br>
-                <form method="get" action="/deptClubs/iot">
-                    <button id="iot">IOT department clubs</button>
-                </form>
-            </div>
-            <div class="card">
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/048/844/827/small/letter-g-electric-logo-abstract-letter-g-with-lightning-bolt-combination-tunder-bolt-design-logo-template-illustration-vector.jpg"
+            <form method="get" action="/deptClubs/iot">
+                <button id="iot">IOT department clubs</button>
+            </form>
+        </div>
+        <div class="card">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/048/844/827/small/letter-g-electric-logo-abstract-letter-g-with-lightning-bolt-combination-tunder-bolt-design-logo-template-illustration-vector.jpg"
                 width="300" height="170"><br>
-                <form method="get" action="/deptClubs/electrical">
-                    <button id="elec">Electrical department clubs</button>
-                </form>
-            </div>
-            <div class="card">
-                <img src="https://resources.nice.com/wp-content/uploads/2024/02/how-machine-learning-is-transforming-intraday-management-banner.jpg"
+            <form method="get" action="/deptClubs/electrical">
+                <button id="elec">Electrical department clubs</button>
+            </form>
+        </div>
+        <div class="card">
+            <img src="https://resources.nice.com/wp-content/uploads/2024/02/how-machine-learning-is-transforming-intraday-management-banner.jpg"
                 width="300" height="170"><br>
-                <form method="get" action="/deptClubs/aiml">
-                    <button id="ml">AI-ML department clubs</button> 
-                </form>
-            </div>
-            <div class="card">
-                <img src="https://t3.ftcdn.net/jpg/03/74/00/90/360_F_374009099_z7aqfbk1atcf8MjJ9zUKx3KeOGgZ9Ecy.jpg"
+            <form method="get" action="/deptClubs/aiml">
+                <button id="ml">AI-ML department clubs</button>
+            </form>
+        </div>
+        <div class="card">
+            <img src="https://t3.ftcdn.net/jpg/03/74/00/90/360_F_374009099_z7aqfbk1atcf8MjJ9zUKx3KeOGgZ9Ecy.jpg"
                 width="300" height="170"><br>
-                <form method="get" action="/deptClubs/mechanical">
-                    <button id="mech">Mechanical department clubs</button> 
-                </form>
-            </div>
+            <form method="get" action="/deptClubs/mechanical">
+                <button id="mech">Mechanical department clubs</button>
+            </form>
+        </div>
     </div>
 
 </body>
+
 </html>

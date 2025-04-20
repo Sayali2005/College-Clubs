@@ -15,21 +15,45 @@
         }
 
         header {
-            background: linear-gradient(150deg, #f8f9fa, #cccecf);
+            background: linear-gradient(150deg, #9bcbec, #169fe4);
             padding: 5px 0px;
-            font-size: 22px;
+            font-size: 23px;
             box-shadow: 0px 0px;
-        }
-
-        ul.default {
-            list-style-type: disc;
         }
 
         li {
             display: inline-block;
             text-align: right;
+            list-style: none;
             padding: 0px 7px;
-            font-size: 24px;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin: 20px;
+            color: royalblue;
+        }
+        a {
+            text-decoration: none;
+            padding: 8px 14px;
+            color: #333;
+            font-weight: bold;
+            border-radius: 6px;
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        a:hover {
+            background-color: royalblue;
+            color: white;
+            transform: scale(1.05);
+            /* slight zoom */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* soft shadow */
+            text-decoration: none;
         }
 
         .club {
