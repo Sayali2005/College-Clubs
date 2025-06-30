@@ -2,7 +2,7 @@ const express = require("express");
 const app =express();
 const mongoose = require("mongoose");
 const Club = require("./models/club.js");
-const port = 8080;
+const port = process.env.PORT || 8080;
 const Login = require("./models/login.js");
 const { error } = require("console");
 const SignUp = require("./models/signUp.js");
@@ -16,15 +16,16 @@ const methodOverride = require("method-override");
 //const ExpressError = require("./ExpressError.js")
 
 main()
-    .then(()=>{console.log("Connection Successful");})
-    .catch(err=>console.log(err));
+  .then(() => console.log("✅ MongoDB connection successful"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 async function main(){
-    await mongoose.connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URI);
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    // });
 }
+console.log("Connecting to:", process.env.MONGO_URI);
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
