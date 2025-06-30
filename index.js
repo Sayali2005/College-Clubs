@@ -11,6 +11,7 @@ const Feedback = require("./models/feedback.js");
 const ALogin = require("./models/admin.js");
 const Event = require('./models/events');
 const path = require("path");
+require("dotenv").config();
 const methodOverride = require("method-override");
 //const ExpressError = require("./ExpressError.js")
 
@@ -19,7 +20,10 @@ main()
     .catch(err=>console.log(err));
 
 async function main(){
-    await mongoose.connect('mongodb://127.0.0.1:27017/CollegeSIGCE');
+    await mongoose.connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
 }
 
 app.set("views",path.join(__dirname,"views"));
