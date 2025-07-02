@@ -99,6 +99,12 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 //         console.log(err);
 //     });
 
+app.get("/dbstatus", (req, res) => {
+  const state = mongoose.connection.readyState;
+  res.send({ connected: state === 1 ? true : false });
+});
+
+
 //Normal join Route
 app.get("/clubs/join",async(req,res,next)=>{
     try{ 
