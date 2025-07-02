@@ -14,6 +14,7 @@ const path = require("path");
 require("dotenv").config();
 const methodOverride = require("method-override");
 //const ExpressError = require("./ExpressError.js")
+console.log("Connecting to:", process.env.MONGO_URI);
 
 main()
   .then(() => console.log("✅ MongoDB connection successful"))
@@ -21,11 +22,19 @@ main()
 
 async function main(){
     await mongoose.connect(process.env.MONGO_URI);
-    //     useNewUrlParser: true,
-    //     useUnifiedTopology: true,
-    // });
 }
-console.log("Connecting to:", process.env.MONGO_URI);
+
+// async function testConnection() {
+//   try {
+//     await mongoose.connect("mongodb+srv://Sayali_2005:Sayali%402307@cluster0.glxcwcm.mongodb.net/CollegeSIGCE?retryWrites=true&w=majority&appName=Cluster0");
+//     console.log("✅ Connected to MongoDB");
+//     process.exit();
+//   } catch (err) {
+//     console.error("❌ MongoDB connection failed:", err);
+//   }
+// }
+
+// testConnection();
 
 app.set("views",path.join(__dirname,"views"));
 app.set("view engine","ejs");
