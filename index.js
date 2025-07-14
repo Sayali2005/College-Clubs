@@ -65,17 +65,17 @@ const fileFilter = (req, file, cb) => {
     }
 };
 // Set up Multer with storage and limits for file size if necessary
-const upload = multer({ 
-    storage: storage,
-    limits: { fileSize: 10 * 1024 * 1024 }  // 10MB limit (optional)
-}).array('clubImages', 10); // Handling multiple files (up to 10)
+// const upload = multer({ 
+//     storage: storage,
+//     limits: { fileSize: 10 * 1024 * 1024 }  // 10MB limit (optional)
+// }).array('clubImages', 10); // Handling multiple files (up to 10)
 
-const upload2 = multer({ storage: storage }).array('eventImages', 2);
+// const upload2 = multer({ storage: storage }).array('eventImages', 2);
 
 // Middleware to serve static files from the specified directory
-app.use('/Club_Images', express.static('D:/Patience/Level2/CLub_Images')); // Serve images from this directory
-app.use('/eventImages', express.static('D:/Patience/Level2/CLub_Images'));
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+ app.use('/Club_Images', express.static('D:/Patience/Level2/CLub_Images')); // Serve images from this directory
+ app.use('/eventImages', express.static('D:/Patience/Level2/CLub_Images'));
+// app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 
 // let club1 = new Club({ 
@@ -279,7 +279,7 @@ function isValidObjectId(id) {
     return mongoose.Types.ObjectId.isValid(id);
 }
 //add Events held by clubs
-app.post('/clubs/:id/submit-event', upload2, async (req, res) => {
+app.post('/clubs/:id/submit-event', upload.array('eventImages', 5), async (req, res) => {
     const clubId = req.params.id;
     if (!isValidObjectId(clubId)) {
         return res.status(400).send('Invalid club ID');
@@ -305,7 +305,7 @@ app.post('/clubs/:id/submit-event', upload2, async (req, res) => {
 });
 
 //Create Route
-app.post("/clubs",upload,async(req,res,next)=>{
+app.post("/clubs",upload.array('clubImages', 5),async(req,res,next)=>{
     try{
           // Check if files were uploaded
           if (!req.files || req.files.length === 0) {
@@ -316,7 +316,7 @@ app.post("/clubs",upload,async(req,res,next)=>{
             studentRole,contactEmail,contactPhone} = req.body;
         // let clubImages = req.files.map(file => `/Club_Images/${file.filename}`);   
         const clubImages = req.files.map(file => file.path); // public Cloudinary URLs
-        
+
         // Map student and faculty data into the correct format
         const studentCoordinators = studentName.map((name, index) => ({
             name,
