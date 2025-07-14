@@ -11,6 +11,7 @@ const Feedback = require("./models/feedback.js");
 const ALogin = require("./models/admin.js");
 const Event = require('./models/events');
 const path = require("path");
+const upload = require('./upload');
 require("dotenv").config();
 const methodOverride = require("method-override");
 //const ExpressError = require("./ExpressError.js")
@@ -313,7 +314,9 @@ app.post("/clubs",upload,async(req,res,next)=>{
         let {clubName,clubDescription,branch,
             facultyName,facultyRole,studentName,
             studentRole,contactEmail,contactPhone} = req.body;
-        let clubImages = req.files.map(file => `/Club_Images/${file.filename}`);   
+        // let clubImages = req.files.map(file => `/Club_Images/${file.filename}`);   
+        const clubImages = req.files.map(file => file.path); // public Cloudinary URLs
+        
         // Map student and faculty data into the correct format
         const studentCoordinators = studentName.map((name, index) => ({
             name,
