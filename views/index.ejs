@@ -406,6 +406,12 @@ form:hover .form-button button {
   font-size: 16px;
 }
 
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
 .card h2 {
     font-size: 1.5rem;
     color: #333;
@@ -553,7 +559,7 @@ form:hover .form-button button {
                 <%for(let club of clubs){%>
                     <div class="card">
                         <!-- <i class="fas fa-cogs"></i> -->
-                        <img src="<%= club.clubImages %>" alt="">
+                        <img src="<%= club.clubImages %>" class="card-img-top" alt="">
                         <h2><%= club.clubName %></h2>
                         <p><%= club.clubDescription %></p>
                         <br>
