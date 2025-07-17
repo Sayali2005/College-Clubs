@@ -401,7 +401,13 @@ form:hover .form-button button {
     font-size: 1rem;
     color: #555;
 }
-
+.card img {
+    height: 150px;
+    width: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -507,7 +513,7 @@ form:hover .form-button button {
                 <%for(let club of clubs){%>
                     <div class="card">
                         <i class="fas fa-cogs"></i>
-                        <img src="<%= club.clubImages %>" alt="">
+                        <img src="<%= club.clubImages %>" alt="" >
                         <p><b><i><%= club.clubName %></i></b></p>
                         <p><i><%= club.clubDescription %></i></p>
                         <br>
